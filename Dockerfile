@@ -43,9 +43,16 @@ COPY . .
 # Build assets
 RUN npm run build
 
-# Set permissions
+# Set permissions and create storage directories
 RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache \
+    storage/app/public/ckeditor \
+    storage/app/public/foto \
+    storage/app/public/major \
+    storage/app/public/ui-config \
     && chmod -R 775 storage bootstrap/cache
+
+# Create storage symlink
+RUN php artisan storage:link || ln -s /var/www/storage/app/public /var/www/public/storage
 
 # Copy entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
