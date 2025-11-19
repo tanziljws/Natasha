@@ -1,4 +1,0 @@
-# Railpack Configuration
-# Install PHP extensions yang diperlukan
-PHP_EXTENSIONS=gd,bcmath
-
