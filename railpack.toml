@@ -1,0 +1,3 @@
+[php]
+extensions = ["gd", "bcmath"]
+
