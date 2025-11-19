@@ -48,8 +48,8 @@ RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cac
     && chmod -R 775 storage bootstrap/cache
 
 # Expose port (Railway will set PORT env var)
-EXPOSE $PORT
+EXPOSE 8000
 
-# Start server
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Start server with proper PORT handling
+CMD sh -c "php artisan serve --host=0.0.0.0 --port=\${PORT:-8000}"
 
