@@ -1,4 +1,0 @@
-# Railway Configuration
-# PHP Extensions yang diperlukan
-PHP_EXTENSIONS=gd,bcmath
-

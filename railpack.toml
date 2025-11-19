@@ -1,8 +1,0 @@
-[build]
-# Install PHP extensions yang diperlukan
-php_extensions = ["gd", "bcmath"]
-
-[build.install]
-# Override composer install untuk ignore platform requirements sementara
-composer_install_flags = ["--ignore-platform-req=ext-gd", "--ignore-platform-req=ext-bcmath"]
-
