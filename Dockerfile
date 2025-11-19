@@ -51,8 +51,8 @@ RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cac
     storage/app/public/ui-config \
     && chmod -R 775 storage bootstrap/cache
 
-# Create storage symlink
-RUN php artisan storage:link || ln -s /var/www/storage/app/public /var/www/public/storage
+# Create storage symlink (will be recreated in entrypoint if needed)
+RUN php artisan storage:link 2>/dev/null || true
 
 # Copy entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
