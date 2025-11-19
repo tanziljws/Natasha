@@ -47,9 +47,13 @@ RUN npm run build
 RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Expose port (Railway will set PORT env var)
 EXPOSE 8000
 
-# Start server with proper PORT handling
-CMD sh -c "php artisan serve --host=0.0.0.0 --port=\${PORT:-8000}"
+# Use entrypoint script
+ENTRYPOINT ["docker-entrypoint.sh"]
 
